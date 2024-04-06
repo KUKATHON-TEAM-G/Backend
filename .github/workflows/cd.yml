@@ -44,9 +44,10 @@ jobs:
       - name: Deploy to Prod
         uses: appleboy/ssh-action@master
         with:
+          key: ${{ secrets.EC2_PRIVATE_KEY }}
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
-          key: ${{ secrets.EC2_PRIVATE_KEY }}
+          port: 22
           envs: GITHUB_SHA
           script: |
             sudo docker-compose down
