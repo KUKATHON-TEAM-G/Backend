@@ -13,17 +13,18 @@ import org.joda.time.DateTime;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
+@Table(name = "member_group")
 public class Group extends BaseEntity {
 
     @Id
-    @Column(name = "group_id")
+    @Column(name = "groups_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "group_name", nullable = false)
+    @Column(name = "groups_name", nullable = false)
     private String name;
 
-    @Column(name = "group_limit_number", nullable = false)
+    @Column(name = "groups_limit_number", nullable = false)
     private int groupLimitNumber;
 
     @Column(name = "start_date", nullable = false)
@@ -42,10 +43,10 @@ public class Group extends BaseEntity {
 
     public static Group toEntity(Member member, GroupCreateRequest request, Category category) {
         return Group.builder()
-            .groupLimitNumber(request.getLimitNumber())
-            .name(request.getGroupName())
-            .startDate(request.getStartDate())
-            .finishDate(request.getFinishDate())
+            .groupLimitNumber(request.limitNumber())
+            .name(request.groupName())
+            .startDate(request.startDate())
+            .finishDate(request.finishDate())
             .category(category)
             .member(member)
             .build();

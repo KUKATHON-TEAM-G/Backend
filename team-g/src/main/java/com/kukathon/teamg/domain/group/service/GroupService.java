@@ -28,9 +28,12 @@ public class GroupService {
         Member member = memberRepository.findById(customUserDetails.getId())
             .orElseThrow(() -> new ApplicationException(MEMBER_NOT_FOUND));
 
-        Category category = categoryRepository.findByName(request.getCategory())
+        Category category = categoryRepository.findByName(request.category())
             .orElseThrow(() -> new ApplicationException(MEMBER_NOT_FOUND));
 
-        return groupRepository.save(Group.toEntity(member, request, category)).getId();
+        Group group = Group.toEntity(member, request, category);
+
+        member.addGroup(group);
+        return groupRepository.save(group).getId();
     }
 }

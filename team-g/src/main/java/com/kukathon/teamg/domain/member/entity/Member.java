@@ -53,6 +53,10 @@ public class Member extends BaseEntity {
         this.birthday = birthday;
     }
 
+    public void addGroup(Group group) {
+        this.groups.add(group);
+    }
+
     public static Member of(String email, MemberCreateRequest request) {
         return new Member(email, request.nickname(), request.gender(), request.birthday());
     }

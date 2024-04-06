@@ -14,4 +14,6 @@ public interface ContentRepository extends JpaRepository<Content, Long> {
     @Query(value = "SELECT * FROM Content c INNER JOIN Category cat ON c.category_id = cat.category_id WHERE cat.member_id = :memberId AND c.date = :date", nativeQuery = true)
     List<Content> findAllByMemberIdAndDate(@Param("memberId") Long memberId,
         @Param("date") DateTime date);
+
+    List<Content> findContentsByCategoryName(String category);
 }
