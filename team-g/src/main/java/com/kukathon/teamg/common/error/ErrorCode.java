@@ -28,6 +28,7 @@ public enum ErrorCode {
      */
     ENTITY_NOT_FOUND(HttpStatus.NOT_FOUND, "요청하신 엔티티를 찾을 수 없습니다."),
     CONTENT_NOT_FOUND(HttpStatus.NOT_FOUND, "요청하신 컨텐츠를 찾을 수 없습니다."),
+    MEMBER_NOT_FOUND(HttpStatus.NOT_FOUND, "요청하신 회원을 찾을 수 없습니다."),
 
     /**
      * 409 Conflict
