@@ -48,7 +48,6 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
           port: 22
-          envs: GITHUB_SHA
           script: |
             sudo docker-compose down
             sudo docker pull ${{ secrets.DOCKER_REPO }}/kukathon
