@@ -3,7 +3,7 @@ package com.kukathon.teamg.domain.content.dto.request;
 import lombok.Getter;
 
 @Getter
-public class RequestUpdateContentDto {
+public class UpdateContentRequest {
 
     private Long memberId;
 

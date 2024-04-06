@@ -1,6 +1,7 @@
 package com.kukathon.teamg.domain.content.entity;
 
 import com.kukathon.teamg.common.entity.BaseEntity;
+import com.kukathon.teamg.domain.category.entity.Category;
 import jakarta.persistence.*;
 import lombok.*;
 import org.joda.time.DateTime;
@@ -18,20 +19,23 @@ public class Content extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "content_name",nullable = false)
-    private String contentName;
+    @Column(name = "content_name", nullable = false)
+    private String name;
 
-    @Column(name = "content_score",nullable = false)
-    private Integer contentScore;
+    @Column(name = "content_score", nullable = false)
+    private Integer score;
 
-
-    @Column(name = "is_checked",nullable = false)
+    @Column(name = "is_checked", nullable = false)
     private Boolean isChecked;
 
-    @Column(name = "date",nullable = false)
+    @Column(name = "date", nullable = false)
     private DateTime date;
 
-    public void updateCheck(){
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
+    private Category category;
+
+    public void updateCheck() {
         this.isChecked = !this.isChecked;
     }
 }

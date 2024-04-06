@@ -1,10 +1,15 @@
 package com.kukathon.teamg.domain.content.dto.response;
 
-import java.util.List;
+import com.kukathon.teamg.domain.category.entity.Category;
+import com.kukathon.teamg.domain.content.entity.Content;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CategoryAndContent {
 
-    private String categoryName;
+    private Map<Category, Content> categoryAndContent = new HashMap<>();
 
-    private List<String> contentNames;
+    public void addCategoryAndContent(Category category, Content content) {
+        categoryAndContent.put(category, content);
+    }
 }

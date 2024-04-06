@@ -4,10 +4,10 @@ spring:
     #        username:
     #        password:
     #        driver-class-name: com.mysql.cj.jdbc.Driver
-#    url: jdbc:mysql://kukathon-db.c3acgug0yyw5.ap-northeast-2.rds.amazonaws.com:3306/kukathon?serverTimezone=UTC&useSSL=false
-    url:
-    username:
-    password:
+    # url: jdbc:mysql://kukathon-db.c3acgug0yyw5.ap-northeast-2.rds.amazonaws.com:3306/kukathon?serverTimezone=UTC&useSSL=false
+    url: jdbc:mysql://db-kukathon.c3acgug0yyw5.ap-northeast-2.rds.amazonaws.com:3306/kukathon?serverTimezone=UTC&useSSL=false
+    username: root
+    password: root1234
     driver-class-name: com.mysql.cj.jdbc.Driver
 
     jpa:
@@ -23,8 +23,7 @@ spring:
 
 logging.level:
   org.hibernate.SQL: debug
-  # org.hibernate.type: trace #??? ?? 2.x, hibernate5
-  org.hibernate.orm.jdbc.bind: trace #??? ?? 3.x, hibernate
+  org.hibernate.orm.jdbc.bind: trace
 
 cloud:
   aws:
