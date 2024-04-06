@@ -23,7 +23,7 @@ public class SecurityConfig {
     private final JwtAuthenticator jwtAuthenticator;
 
     private final String[] allowedUrls = {"/api-docs/**", "/swagger-ui/**", "/v3/api-docs/**",
-        "/swagger-resources/**", "/webjars/**"
+        "/swagger-resources/**", "/webjars/**", "/oauth/**", "/**"
     };
 
     @Bean

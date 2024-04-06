@@ -1,8 +1,11 @@
 package com.kukathon.teamg.domain.member.entity;
 
 import com.kukathon.teamg.common.entity.BaseEntity;
+import com.kukathon.teamg.domain.category.entity.Category;
 import com.kukathon.teamg.domain.member.dto.MemberCreateRequest;
 import jakarta.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,6 +17,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @Getter
 @Entity
+@Table(name = "member")
 public class Member extends BaseEntity {
 
     @Id
@@ -32,6 +36,9 @@ public class Member extends BaseEntity {
 
     @Column(name = "birth")
     private String birthday;
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Category> categories = new ArrayList<>();
 
     private Member(String email, String name, String gender, String birthday) {
         this.email = email;

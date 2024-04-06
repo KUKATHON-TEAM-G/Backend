@@ -2,6 +2,7 @@ package com.kukathon.teamg.domain.category.entity;
 
 import com.kukathon.teamg.common.entity.BaseEntity;
 import com.kukathon.teamg.domain.content.entity.Content;
+import com.kukathon.teamg.domain.member.entity.Member;
 import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,4 +25,8 @@ public class Category extends BaseEntity {
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Content> contents = new ArrayList<>();
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id")
+    private Member member;
 }

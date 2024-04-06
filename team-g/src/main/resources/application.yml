@@ -1,3 +1,4 @@
+
 spring:
   datasource:
     #        url:
@@ -7,18 +8,18 @@ spring:
     # url: jdbc:mysql://kukathon-db.c3acgug0yyw5.ap-northeast-2.rds.amazonaws.com:3306/kukathon?serverTimezone=UTC&useSSL=false
     url: jdbc:mysql://db-kukathon.c3acgug0yyw5.ap-northeast-2.rds.amazonaws.com:3306/kukathon?serverTimezone=UTC&useSSL=false
     username: root
-    password: root1234
+    password: rooy1234
     driver-class-name: com.mysql.cj.jdbc.Driver
 
-    jpa:
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
       hibernate:
-        ddl-auto: create
-      properties:
-        hibernate:
-          format_sql: true
+        format_sql: true
       show-sql: true
       # Initial Data config
-      defer-datasource-initialization: true
+    defer-datasource-initialization: true
 
 
 logging.level:

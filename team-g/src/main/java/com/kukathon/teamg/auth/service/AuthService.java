@@ -25,9 +25,9 @@ public class AuthService {
             authCode);
 
         // 추출한 정보를 토대로 JWT Token 생성
-        TokenResponse tokenResponse = jwtTokenProvider.createTokenInfo(kakaoOAuthResponse.email());
+        TokenResponse tokenResponse = jwtTokenProvider.createTokenInfo(kakaoOAuthResponse.id());
 
-        Optional<Member> member = memberRepository.findByEmail(kakaoOAuthResponse.email());
+        Optional<Member> member = memberRepository.findByEmail(kakaoOAuthResponse.id());
         if (!member.isPresent()) {
             return new LoginResponse(tokenResponse.accessToken(), tokenResponse.refreshToken(),
 	false);
