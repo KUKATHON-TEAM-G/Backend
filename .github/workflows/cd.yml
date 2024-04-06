@@ -18,12 +18,6 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name : Set yml
-        run: |
-          mkdir -p src/main/resources
-          echo "${{ secrets.APPLICATION_YML }}" | base64 --decode > src/main/resources/application.yml
-          find src
-
       - name: Permission for Gradle Wrapper
         run: chmod +x ./gradlew
 
