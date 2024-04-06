@@ -29,8 +29,14 @@ jobs:
           ./gradlew build -x test
         shell: bash
 
+      - name: List JAR files
+        run: |
+          cd team-g
+          ls -la build/libs/
+          
       - name: Docker Build & Push
         run: |
+          cd team-g
           docker login -u ${{ secrets.DOCKER_ID }} -p ${{ secrets.DOCKER_PASSWORD }}
           docker build -f Dockerfile -t ${{ secrets.DOCKER_REPO }}/kukathon .
           docker push ${{ secrets.DOCKER_REPO }}/kukathon
