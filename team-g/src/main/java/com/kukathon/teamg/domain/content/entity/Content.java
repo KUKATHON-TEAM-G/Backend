@@ -19,17 +19,16 @@ public class Content extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "content_name",nullable = false)
+    @Column(name = "content_name", nullable = false)
     private String contentName;
 
-    @Column(name = "content_score",nullable = false)
-    private Integer content_score;
+    @Column(name = "content_score", nullable = false)
+    private Integer contentScore;
 
 
-    @Column(name = "is_checked",nullable = false)
-    private Integer is_checked;
+    @Column(name = "is_checked", nullable = false)
+    private Integer isChecked;
 
-    @Column(name = "date",nullable = false)
+    @Column(name = "date", nullable = false)
     private DateTime date;
-
 }

@@ -4,14 +4,15 @@ spring:
     #        username:
     #        password:
     #        driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:h2:tcp://localhost/~/test
-    username: sa
+#    url: jdbc:mysql://kukathon-db.c3acgug0yyw5.ap-northeast-2.rds.amazonaws.com:3306/kukathon?serverTimezone=UTC&useSSL=false
+    url:
+    username:
     password:
-    driver-class-name: org.h2.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
     jpa:
       hibernate:
-        ddl-auto: update
+        ddl-auto: create
       properties:
         hibernate:
           format_sql: true
@@ -37,3 +38,19 @@ cloud:
       auto: false
     stack:
       auto: false
+
+kakao:
+  client-id: 98e0050b4553c0f6dd346cf67dd612fd
+  redirect-uri: https://packdev937.site/oauth/kakao
+  token-uri: https://kauth.kakao.com/oauth/token
+  userinfo-uri: https://kapi.kakao.com/v1/oidc/userinfo
+
+jwt:
+  secret-key: NiOeyFbN1Gqo10bPgUyTFsRMkJpGLXSvGP04eFqj5B30r5TcrtlSXfQ7TndvYjNvfkEKLqILn0j1SmKODO1Yw3JpBBgI3nVPEahqxeY8qbPSFGyzyEVxnl4AQcrnVneI
+  issuer: packdev937
+  access:
+    expiration: 1209600000 # 1시간 (1000L(ms -> s) * 60L(s -> m) * 60L(m -> h))
+    header: Authorization
+  refresh:
+    expiration: 1209600000 # 2주 (1000L(ms -> s) * 60L(s -> m) * 60L(m -> h) * 24L(h -> 하루) * 14(2주))
+    header: Authorization-refresh
