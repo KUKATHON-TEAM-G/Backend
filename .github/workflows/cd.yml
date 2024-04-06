@@ -19,10 +19,14 @@ jobs:
           distribution: 'temurin'
 
       - name: Permission for Gradle Wrapper
-        run: chmod +x ./team-g/gradlew
+        run: |
+          cd team-g
+          chmod +x ./gradlew
 
       - name: Build with Gradle
-        run: ./team-g/gradlew build -x test
+        run: |
+          cd team-g
+          ./gradlew build -x test
         shell: bash
 
       - name: Docker Build & Push
