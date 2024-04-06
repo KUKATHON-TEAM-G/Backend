@@ -5,7 +5,7 @@ import com.kukathon.teamg.domain.content.entity.Content;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CategoryAndContent {
+public class DailyContentResponse {
 
     private Map<Category, Content> categoryAndContent = new HashMap<>();
 

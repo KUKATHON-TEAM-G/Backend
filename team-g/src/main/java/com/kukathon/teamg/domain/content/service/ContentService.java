@@ -2,16 +2,13 @@ package com.kukathon.teamg.domain.content.service;
 
 import com.kukathon.teamg.auth.domain.CustomUserDetails;
 import com.kukathon.teamg.common.error.ApplicationException;
-import com.kukathon.teamg.domain.content.dto.response.CategoryAndContent;
+import com.kukathon.teamg.domain.content.dto.response.DailyContentResponse;
 import com.kukathon.teamg.domain.content.entity.Content;
 import com.kukathon.teamg.domain.content.repository.ContentRepository;
 import lombok.RequiredArgsConstructor;
 import org.joda.time.DateTime;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PathVariable;
-
-import java.util.List;
 
 import static com.kukathon.teamg.common.error.ErrorCode.CONTENT_NOT_FOUND;
 
@@ -30,17 +27,15 @@ public class ContentService {
         content.updateCheck();
     }
 
-    public CategoryAndContent findAllContents(CustomUserDetails customUserDetails,
+    public DailyContentResponse findAllContents(CustomUserDetails customUserDetails,
         DateTime date) {
-        CategoryAndContent categoryAndContent = new CategoryAndContent();
+        DailyContentResponse response = new DailyContentResponse();
 
         contentRepository.findAllByMemberIdAndDate(customUserDetails.getId(), date)
             .stream()
-            .forEach(content -> categoryAndContent.addCategoryAndContent(content.getCategory(),
+            .forEach(content -> response.addCategoryAndContent(content.getCategory(),
 	content));
 
-        return categoryAndContent;
+        return response;
     }
-
-    
 }
