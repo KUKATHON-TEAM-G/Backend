@@ -2,15 +2,18 @@ package com.kukathon.teamg.domain.member.entity;
 
 import com.kukathon.teamg.common.entity.BaseEntity;
 import com.kukathon.teamg.domain.category.entity.Category;
+import com.kukathon.teamg.domain.content.entity.Content;
+import com.kukathon.teamg.domain.group.entity.Group;
 import com.kukathon.teamg.domain.member.dto.MemberCreateRequest;
 import jakarta.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -36,6 +39,9 @@ public class Member extends BaseEntity {
 
     @Column(name = "birth")
     private String birthday;
+
+    @OneToMany(mappedBy = "group", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Group> groups = new ArrayList<>();
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Category> categories = new ArrayList<>();
