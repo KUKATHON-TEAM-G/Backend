@@ -2,7 +2,9 @@ package com.kukathon.teamg.domain.group.service;
 
 import com.kukathon.teamg.auth.domain.CustomUserDetails;
 import com.kukathon.teamg.common.error.ApplicationException;
-import com.kukathon.teamg.domain.group.dto.request.RequestCreateGroupDto;
+import com.kukathon.teamg.domain.category.entity.Category;
+import com.kukathon.teamg.domain.category.repository.CategoryRepository;
+import com.kukathon.teamg.domain.group.dto.request.GroupCreateRequest;
 import com.kukathon.teamg.domain.group.entity.Group;
 import com.kukathon.teamg.domain.group.repository.GroupRepository;
 import com.kukathon.teamg.domain.member.entity.Member;
@@ -11,7 +13,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import static com.kukathon.teamg.common.error.ErrorCode.CONTENT_NOT_FOUND;
 import static com.kukathon.teamg.common.error.ErrorCode.MEMBER_NOT_FOUND;
 
 @Service
@@ -21,11 +22,15 @@ public class GroupService {
 
     private final MemberRepository memberRepository;
     private final GroupRepository groupRepository;
+    private final CategoryRepository categoryRepository;
 
-    public Long createGroup(CustomUserDetails customUserDetails, RequestCreateGroupDto groupDto) {
+    public Long create(CustomUserDetails customUserDetails, GroupCreateRequest request) {
         Member member = memberRepository.findById(customUserDetails.getId())
-                .orElseThrow(() -> new ApplicationException(MEMBER_NOT_FOUND));
-        Group group = groupRepository.save(Group.toEntitiy(member,groupDto));
-        return group.getId();
+            .orElseThrow(() -> new ApplicationException(MEMBER_NOT_FOUND));
+
+        Category category = categoryRepository.findByName(request.getCategory())
+            .orElseThrow(() -> new ApplicationException(MEMBER_NOT_FOUND));
+
+        return groupRepository.save(Group.toEntity(member, request, category)).getId();
     }
 }
