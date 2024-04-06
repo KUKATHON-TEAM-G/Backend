@@ -17,11 +17,11 @@ import org.joda.time.DateTime;
 public class Group extends BaseEntity {
 
     @Id
-    @Column(name = "groups_id")
+    @Column(name = "member_group_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "groups_name", nullable = false)
+    @Column(name = "member_group_name", nullable = false)
     private String name;
 
     @Column(name = "groups_limit_number", nullable = false)

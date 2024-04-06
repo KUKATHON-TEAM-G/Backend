@@ -17,7 +17,7 @@ public class TokenUtils {
     private final String BEARER = "Bearer ";
     private final String clientId = "98e0050b4553c0f6dd346cf67dd612fd";
     private final String localRedirectUri = "http://localhost:8080/oauth/kakao";
-    private final String redirectUri = "https://packdev937.site";
+    private final String redirectUri = "https://packdev937.site/oauth/kakao";
     private final String authorizationCode = "authorization_code";
 
     public TokenResponse getAccessToken(String authCode) {
